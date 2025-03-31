@@ -1,0 +1,496 @@
+body {
+  text-align: center;
+  background-color: rgb(13, 13, 13);
+}
+
+#level-title {
+  font-family: 'Creepster', cursive;
+  font-size: 4rem;
+  margin:  5%;
+  color: #f75504;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5); 
+  animation: flickeText 1.5s infinite alternate, fadeText 2s infinite alternate;
+}
+@keyframes flickeText {
+  0% {
+    opacity: 1;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
+  }
+  50% {
+    opacity: 0.5;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.9), 0px 0px 20px rgba(0, 0, 0, 0.7);
+  }
+  100% {
+    opacity: 1;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7), 0px 0px 25px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Fade animation */
+@keyframes fadeText {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.container {
+  display: block;
+  width: 70%; 
+  margin: auto;
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 0.3); 
+  border-radius: 50% 50% 0 0; 
+  box-shadow: 0px 0px 30px rgba(255, 255, 255, 0.7); 
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  animation: float 3s ease-in-out infinite;
+}
+
+.container:before {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  left: 10%;
+  right: 10%;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.5); /* Ghostly tail effect */
+  border-radius: 50%;
+  box-shadow: 0px 20px 30px rgba(255, 255, 255, 0.5); /* Glowing tail */
+  animation: fadeTail 2s ease-in-out infinite alternate;
+}
+
+/* Fade tail animation */
+@keyframes fadeTail {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.ghost {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background-color: rgba(255, 255, 255, 0.7); /* Ghostly pale color */
+  border-radius: 50%; /* Circle body */
+  box-shadow: 0 0 500px rgba(190, 11, 197, 0.847), 0 0 80px rgba(0, 255, 0, 0.5); /* Glowing pink + eerie green glow */
+  overflow: hidden;
+  animation: float 3s ease-in-out infinite, fadeGhost 2s ease-in-out infinite alternate, ghostDistort 3s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+@keyframes fadeGhost {
+  0% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 0.1;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes ghostDistort {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(1.05) rotate(5deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1) rotate(-5deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(1.05) rotate(5deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+}
+
+.ghost .eye {
+  position: absolute;
+  top: 50px;
+  width: 30px;
+  height: 30px;
+  background-color: black;
+  border-radius: 50%;
+  animation: fadeEye 2s ease-in-out infinite alternate, eyeGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes fadeEye {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes eyeGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.8);
+  }
+}
+
+.ghost .eye.left {
+  left: 30px;
+}
+
+.ghost .eye.right {
+  right: 30px;
+}
+
+.ghost .eye.left {
+  left: 30px;
+}
+
+.ghost .eye.right {
+  right: 30px;
+}
+
+.ghost .mouth {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 50px;
+  background-color: black;
+  border-radius: 50%;
+  clip-path: ellipse(50% 80% at 50% 50%);
+  animation: fadeMouth 2s ease-in-out infinite alternate, mouthDistort 3s ease-in-out infinite alternate;
+}
+
+@keyframes fadeMouth {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes mouthDistort {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  25% {
+    transform: translateX(-50%) rotate(3deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(-3deg);
+  }
+  75% {
+    transform: translateX(-50%) rotate(3deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+}
+
+
+
+
+.bat1 {
+  position: absolute;
+  top: 25%;
+  left: 11%;
+  transform: translateX(-50%) translateY(-50%); /* Center the bat properly */
+  width: 100px;
+  height: 50px;
+  background-color: rgb(16, 16, 16);
+  clip-path: polygon(0% 40%, 15% 0%, 35% 10%, 50% 0%, 65% 10%, 85% 0%, 100% 40%, 85% 60%, 65% 50%, 50% 60%, 35% 50%, 15% 60%); /* Bat wings shape */
+  animation: batFly 5s ease-in-out infinite;
+  z-index: 2; /* Ensure it's above the ghost and other elements */
+}
+
+.bat2 {
+  position: absolute;
+  top: 89%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%); /* Center the bat properly */
+  width: 100px;
+  height: 50px;
+  background-color: rgb(16, 16, 16);
+  clip-path: polygon(0% 40%, 15% 0%, 35% 10%, 50% 0%, 65% 10%, 85% 0%, 100% 40%, 85% 60%, 65% 50%, 50% 60%, 35% 50%, 15% 60%); /* Bat wings shape */
+  animation: batFly 5s ease-in-out infinite;
+  z-index: 2; /* Ensure it's above the ghost and other elements */
+}
+
+.bat3 {
+  position: absolute;
+  top: 50%;
+  left: 88%;
+  transform: translateX(-50%) translateY(-50%); /* Center the bat properly */
+  width: 100px;
+  height: 50px;
+  background-color: rgb(16, 16, 16);
+  clip-path: polygon(0% 40%, 15% 0%, 35% 10%, 50% 0%, 65% 10%, 85% 0%, 100% 40%, 85% 60%, 65% 50%, 50% 60%, 35% 50%, 15% 60%); /* Bat wings shape */
+  animation: batFly 5s ease-in-out infinite;
+  z-index: 2; /* Ensure it's above the ghost and other elements */
+}
+
+@keyframes batFly {
+  0% {
+    transform: translateX(-50%) translateY(0%) rotate(0deg);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.6); /* Initial glow */
+  }
+  15% {
+    transform: translateX(-60%) translateY(-20%) rotate(10deg);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8); /* Glowing more */
+  }
+  30% {
+    transform: translateX(-40%) translateY(-40%) rotate(15deg);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 1); /* Maximum glow */
+  }
+  45% {
+    transform: translateX(0%) translateY(-70%) rotate(30deg);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.8); /* Glowing effect fades slightly */
+  }
+  60% {
+    transform: translateX(40%) translateY(-50%) rotate(20deg);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.8); /* Green glow intensifies */
+  }
+  75% {
+    transform: translateX(60%) translateY(-20%) rotate(10deg);
+    box-shadow: 0 0 25px rgba(0, 255, 0, 1); /* Glowing effect at peak */
+  }
+  85% {
+    transform: translateX(40%) translateY(20%) rotate(5deg);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.6); /* Slightly dimmed glow */
+  }
+  100% {
+    transform: translateX(-50%) translateY(0%) rotate(0deg);
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.6); /* Fade out the glow */
+  }
+}
+
+.skull {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background-image: url('../Images/skull.svg');
+  background-size: contain; /* Keep the aspect ratio */
+  background-position: center; /* Center the SVG */
+  background-repeat: no-repeat;
+  animation: floatskull 3s ease-in-out infinite, fadeSkull 2s ease-in-out infinite alternate, skullDistort 3s ease-in-out infinite;
+  opacity: 0.9;
+}
+
+@keyframes float {
+0% {
+  transform: translateY(0);
+}
+50% {
+  transform: translateY(-15px); 
+}
+100% {
+  transform: translateY(0); 
+}
+}
+
+@keyframes flicker {
+0% {
+  opacity: 1;
+}
+50% {
+  opacity: 0.6;
+}
+100% {
+  opacity: 1;
+}
+}
+
+@keyframes floatskull {
+  0% {
+    transform: translate(-50%, -50%) translateY(0);
+  }
+  50% {
+    transform: translate(-50%, -50%) translateY(-20px); /* Moving upwards */
+  }
+  100% {
+    transform: translate(-50%, -50%) translateY(0); /* Returning to original position */
+  }
+}
+
+@keyframes fadeSkull {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes skullDistort {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(1.05) rotate(5deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1) rotate(-5deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(1.05) rotate(5deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+}
+
+.btn {
+  margin: 25px;
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  border: 4px solid black;
+  border-radius: 20%;
+}
+
+.game-over {
+  background-color: rgb(55, 0, 82);
+  opacity: 0.8;
+  animation:  fly 3s infinite, fly_over 0.2s infinite, fly_over 0.2s infinite, fly_over 0.2s infinite;
+}
+
+.red {
+  background-color: red;
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.865);
+  transition: box-shadow 0.3s ease;
+}
+
+.red:hover {
+  box-shadow: 0 0 30px 15px rgba(138, 43, 226, 1); 
+}
+
+.green {
+  background-color: green;
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.865);
+  transition: box-shadow 0.3s ease;
+}
+
+.green:hover {
+  box-shadow: 0 0 30px 15px rgba(138, 43, 226, 1); 
+}
+
+.blue {
+  background-color: blue;
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.865);
+  transition: box-shadow 0.3s ease;
+}
+
+.blue:hover {
+  box-shadow: 0 0 30px 15px rgba(138, 43, 226, 1); 
+}
+
+.yellow {
+  background-color: yellow;
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.865);
+  transition: box-shadow 0.3s ease;
+}
+
+.yellow:hover {
+  box-shadow: 0 0 30px 15px rgba(138, 43, 226, 1); 
+}
+
+.pressed {
+  background-color: grey;
+  box-shadow: 0 0 20px white; 
+  transition: box-shadow 0.3s ease;
+}
+
+.pressed:hover {
+  box-shadow: 0 0 30px 15px rgba(138, 43, 226, 1); 
+}
+
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fly {
+  0% {
+    opacity: 0.8;
+  }
+  25% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  75% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes fly_over {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
